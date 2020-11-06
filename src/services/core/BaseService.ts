@@ -4,15 +4,17 @@ import axios from './http';
 export default class BaseService {
   /**
    * @type {string}
-   **/
+   * */
   apiVersion = '';
+
   /**
    * @type {string}
-   **/
+   * */
   apiResource = '';
+
   /**
    * Defines constructor to inherit its own class type to be used
-   **/
+   * */
   ['constructor']: typeof BaseService;
 
   /**
@@ -21,8 +23,8 @@ export default class BaseService {
    * @param {string} start
    * @param {string} end
    * @return {string}
-   **/
-  static normalize (start: string, end: string) {
+   * */
+  static normalize(start: string, end: string) {
     return `${start}/${end}`.replace(/\/{2,}/g, '/');
   }
 
@@ -33,8 +35,8 @@ export default class BaseService {
    * @param {object} [params={}]
    *
    * @return {Promise<AxiosResponse>}
-   **/
-  get ({ url = '', params = {} } = {}): Promise<AxiosResponse> {
+   * */
+  get({ url = '', params = {} } = {}): Promise<AxiosResponse> {
     return axios.get(this.constructor.normalize(this.apiVersion, url || this.apiResource), { params });
   }
 
@@ -47,8 +49,10 @@ export default class BaseService {
    * @param {object} [headers={}]
    *
    * @return {Promise<AxiosResponse>}
-   **/
-  post ({ url = '', payload = {}, params = {}, headers = {} }): Promise<AxiosResponse> {
+   * */
+  post({
+    url = '', payload = {}, params = {}, headers = {},
+  }): Promise<AxiosResponse> {
     return axios.post(this.constructor.normalize(this.apiVersion, url || this.apiResource), payload, { params, headers });
   }
 
@@ -60,8 +64,8 @@ export default class BaseService {
    * @param {object} [params={}]
    *
    * @return {Promise<AxiosResponse>}
-   **/
-  put ({ url = '', payload = {}, params = {} }): Promise<AxiosResponse> {
+   * */
+  put({ url = '', payload = {}, params = {} }): Promise<AxiosResponse> {
     return axios.put(this.constructor.normalize(this.apiVersion, url || this.apiResource), payload, { params });
   }
 
@@ -73,8 +77,8 @@ export default class BaseService {
    * @param {object} [params={}]
    *
    * @return {Promise<AxiosResponse>}
-   **/
-  patch ({ url = '', payload = {}, params = {} }): Promise<AxiosResponse> {
+   * */
+  patch({ url = '', payload = {}, params = {} }): Promise<AxiosResponse> {
     return axios.patch(this.constructor.normalize(this.apiVersion, url || this.apiResource), payload, { params });
   }
 
@@ -84,8 +88,8 @@ export default class BaseService {
    * @param {object} [params={}]
    *
    * @return {Promise<AxiosResponse>}
-   **/
-  delete ({ url = '', params = {} }): Promise<AxiosResponse> {
+   * */
+  delete({ url = '', params = {} }): Promise<AxiosResponse> {
     return axios.delete(this.constructor.normalize(this.apiVersion, url || this.apiResource), { params });
   }
 
@@ -100,8 +104,8 @@ export default class BaseService {
    * @param {object} [params={}]
    *
    * @return {Promise<AxiosResponse>}
-   **/
-  fetch ({ url = '', params = {} } = {}): Promise<AxiosResponse> {
+   * */
+  fetch({ url = '', params = {} } = {}): Promise<AxiosResponse> {
     return this.get({ url, params });
   }
 
@@ -111,8 +115,8 @@ export default class BaseService {
    * @param {number} [id]
    *
    * @return {Promise<AxiosResponse>}
-   **/
-  show (id: number): Promise<AxiosResponse> {
+   * */
+  show(id: number): Promise<AxiosResponse> {
     return this.get({ url: `${this.apiResource}/${id}` });
   }
 
@@ -122,8 +126,8 @@ export default class BaseService {
    * @param {object} [payload={}]
    *
    * @return {Promise<AxiosResponse>}
-   **/
-  store (payload: any): Promise<AxiosResponse> {
+   * */
+  store(payload: any): Promise<AxiosResponse> {
     return this.post({ payload });
   }
 
@@ -133,8 +137,8 @@ export default class BaseService {
    * @param {object} [payload={}]
    *
    * @return {Promise<AxiosResponse>}
-   **/
-  update (payload: any): Promise<AxiosResponse> {
+   * */
+  update(payload: any): Promise<AxiosResponse> {
     return this.put({ url: `${this.apiResource}/${payload.id}`, payload });
   }
 
@@ -144,8 +148,8 @@ export default class BaseService {
    * @param {number} [id]
    *
    * @return {Promise<AxiosResponse>}
-   **/
-  destroy (id: number): Promise<AxiosResponse> {
+   * */
+  destroy(id: number): Promise<AxiosResponse> {
     return this.delete({ url: `${this.apiResource}/${id}` });
   }
 }

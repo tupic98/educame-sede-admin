@@ -1,3 +1,4 @@
+/* eslint import/no-cycle: "off" */
 import { MutationTree } from 'vuex';
 import { AuthState } from '@/store/modules/Auth/types';
 import * as types from '@/store/commitTypes';
@@ -13,7 +14,7 @@ export const mutations: MutationTree<AuthState> = {
   },
   [types.TOGGLE_LOADING](state, status: boolean) {
     state.isLoading = status;
-  }
-}
+  },
+};
 
 export default mutations;

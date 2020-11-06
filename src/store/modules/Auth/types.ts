@@ -1,4 +1,4 @@
 export interface AuthState {
-  token: string | undefined,
-  isLoading: boolean,
+  token: string | undefined;
+  isLoading: boolean;
 }
