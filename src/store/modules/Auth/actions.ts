@@ -1,3 +1,4 @@
+/* eslint import/no-cycle: "off", @typescript-eslint/no-var-requires: "off" */
 import { ActionContext, ActionTree } from 'vuex';
 import { AuthState } from '@/store/modules/Auth/types';
 import { RootState } from '@/store/types';
@@ -7,7 +8,7 @@ import TokenService from '@/services/core/TokenService';
 
 const localStore = require('store');
 
-interface AuthActionContext extends ActionContext<AuthState, RootState> { }
+type AuthActionContext = ActionContext<AuthState, RootState>
 
 export const actions: ActionTree<AuthState, RootState> = {
   authenticate: async ({ commit }: AuthActionContext, credentials: LoginCredentials) => {
@@ -23,7 +24,7 @@ export const actions: ActionTree<AuthState, RootState> = {
   },
   logout: ({ commit }: AuthActionContext) => {
     TokenService.removeToken();
-  }
-}
+  },
+};
 
 export default actions;
