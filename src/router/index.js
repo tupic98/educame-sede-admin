@@ -67,7 +67,7 @@ router.beforeEach((to, from, next) => {
 
   if (!isPublic && !onlyWhenLoggedOut && !loggedIn) {
     return next({
-      name: 'Home',
+      name: 'Login',
       query: { redirect: to.fullPath }, // Store the full path to redirect the user to after login
     });
   }

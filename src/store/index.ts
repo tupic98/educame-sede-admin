@@ -1,7 +1,7 @@
 /* eslint import/no-cycle: "off" */
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { auth } from '@/store/modules/Auth';
+import { auth } from '@/store/modules/auth';
 
 Vue.use(Vuex);
 

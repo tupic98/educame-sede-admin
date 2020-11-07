@@ -1,10 +1,10 @@
 /* eslint import/no-cycle: "off", import/no-named-as-default: "off" */
-import { AuthState } from '@/store/modules/Auth/types';
+import { AuthState } from '@/store/modules/auth/types';
 import { Module } from 'vuex';
 import { RootState } from '@/store/types';
-import mutations from '@/store/modules/Auth/mutations';
-import getters from '@/store/modules/Auth/getters';
-import actions from '@/store/modules/Auth/actions';
+import mutations from '@/store/modules/auth/mutations';
+import getters from '@/store/modules/auth/getters';
+import actions from '@/store/modules/auth/actions';
 import TokenService from '@/services/core/TokenService';
 
 export const state: AuthState = {

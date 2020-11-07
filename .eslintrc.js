@@ -18,5 +18,8 @@ module.exports = {
     'max-len': 'off',
     'no-underscore-dangle': 'off',
     'no-unused-expressions': 'off',
+    'class-methods-use-this': 'off',
+    'consistent-return': 'off',
+    'lines-between-class-members': 'off',
   },
 };

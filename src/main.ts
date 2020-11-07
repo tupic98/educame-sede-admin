@@ -1,5 +1,7 @@
-/* eslint @typescript-eslint/no-var-requires: "off" */
+/* eslint-disable */
 import Vue from 'vue';
+// @ts-ignore
+import vClickOutside from 'v-click-outside';
 import es, { messages } from 'vee-validate/dist/locale/es.json';
 import {
   ValidationProvider,
@@ -15,6 +17,8 @@ import store from './store';
 import '@/bootstrap';
 
 import './assets/scss/tailwind.scss';
+
+Vue.use(vClickOutside);
 
 /* <editor-fold desc="Snotify"> */
 const options = {

@@ -1,6 +1,6 @@
 /* eslint import/no-cycle: "off", @typescript-eslint/no-var-requires: "off" */
 import { ActionContext, ActionTree } from 'vuex';
-import { AuthState } from '@/store/modules/Auth/types';
+import { AuthState } from '@/store/modules/auth/types';
 import { RootState } from '@/store/types';
 import * as types from '@/store/commitTypes';
 import AuthService from '@/services/AuthService';

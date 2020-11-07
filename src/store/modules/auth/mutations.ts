@@ -1,6 +1,6 @@
 /* eslint import/no-cycle: "off" */
 import { MutationTree } from 'vuex';
-import { AuthState } from '@/store/modules/Auth/types';
+import { AuthState } from '@/store/modules/auth/types';
 import * as types from '@/store/commitTypes';
 import TokenService from '@/services/core/TokenService';
 

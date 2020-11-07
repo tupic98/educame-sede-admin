@@ -11,11 +11,11 @@ export default [
   | authentication.
   |
   */
-  ...mapRoutes({ public: true, layout: 'home' }, [
+  ...mapRoutes({ onlyWhenLoggedOut: false, layout: 'default' }, [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
+      name: 'HomePage',
+      component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     },
     {
       path: '/about',
@@ -23,12 +23,19 @@ export default [
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+      component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
     },
     {
       path: '/test/:id',
       name: 'test-id',
-      component: () => import(/* webpackChunkName: "test" */ '../views/test.vue'),
+      component: () => import(/* webpackChunkName: "test" */ '@/views/test.vue'),
+    },
+  ]),
+  ...mapRoutes({ onlyWhenLoggedOut: true, layout: 'auth' }, [
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import(/* webpackChunkName: "Login" */ '@/views/Login.vue'),
     },
   ]),
 ];
