@@ -50,7 +50,7 @@ export default class BaseService {
    *
    * @return {Promise<AxiosResponse>}
    * */
-  post({
+  async post({
     url = '', payload = {}, params = {}, headers = {},
   }): Promise<AxiosResponse> {
     return axios.post(this.constructor.normalize(this.apiVersion, url || this.apiResource), payload, { params, headers });

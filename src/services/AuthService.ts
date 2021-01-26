@@ -2,7 +2,7 @@ import BaseService from '@/services/core/BaseService';
 import { AxiosResponse } from 'axios';
 
 class AuthService extends BaseService {
-  apiVersion = '/v1';
+  apiVersion = '';
 
   apiResource = '/admin/auth';
 
