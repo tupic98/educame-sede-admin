@@ -4,4 +4,5 @@ interface Sede {
   logo: string;
   code: string;
   address: string;
+  active?: boolean;
 }
