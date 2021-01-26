@@ -144,8 +144,12 @@ export default class ShowStudentPage extends Vue {
   selectedModule = '1';
   showConfirmationModal = false;
   showDeleteModal = false;
-  modifyingNotes = {}
-  notesForm = {}
+  modifyingNotes: {
+    [key: string]: number | string | any
+  } = {}
+  notesForm: {
+    [key: string]: number | string | any
+  } = {}
 
   @Students.State('isLoading') isStudentsLoading!: boolean;
   @Students.State('student') student!: Student;
@@ -157,12 +161,12 @@ export default class ShowStudentPage extends Vue {
 
   async mounted() {
     const { id } = this.$route.params;
-    await this.fetchStudent({ id, vm: this });
-    await this.fetchNotes({ id, vm: this });
-    Object.keys(this.notes).forEach((key) => {
+    await this.fetchStudent({ id: +id, vm: this });
+    await this.fetchNotes({ id: +id, vm: this });
+    Object.keys(this.notes).forEach((key: any) => {
       this.$set(this.modifyingNotes, key, {});
       this.$set(this.notesForm, key, {});
-      this.notes[key].forEach((subject) => {
+      this.notes[key].forEach((subject: any) => {
         this.$set(this.modifyingNotes[key], subject.id, false);
         this.$set(this.notesForm[key], subject.id, {
           id,
@@ -180,7 +184,7 @@ export default class ShowStudentPage extends Vue {
   }
 
   async deleteItem() {
-    await this.deleteStudent(this.student?.id);
+    await this.deleteStudent({ id: +this.student?.id, vm: this});
     this.showConfirmationModal = true;
   }
 
@@ -208,7 +212,7 @@ export default class ShowStudentPage extends Vue {
       const { id } = this.$route.params;
       await this.updateNote({ payload: this.notesForm[this.selectedModule][key], vm: this });
       this.$set(this.modifyingNotes[this.selectedModule], key, false);
-      await this.fetchNotes({ id, vm: this });
+      await this.fetchNotes({ id: +id, vm: this });
       // eslint-disable-next-line no-empty
     } catch (e) {
     }

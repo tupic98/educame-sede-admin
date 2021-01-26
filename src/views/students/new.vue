@@ -247,7 +247,7 @@ export default class NewStudentPage extends Vue {
       await this.fetchSectionList(this);
       await this.fetchGradeList(this);
     } catch (e) {
-      this.$snotify.error('Ha ocurrido un error');
+      (this as any).$snotify.error('Ha ocurrido un error');
     }
   }
 

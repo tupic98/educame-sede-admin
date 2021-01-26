@@ -277,7 +277,7 @@ export default class ShowStudentPage extends Vue {
 
   async mounted() {
     const { id } = this.$route.params;
-    await this.fetchStudent({ id, vm: this });
+    await this.fetchStudent({ id: +id, vm: this });
     if (!this.student.id) {
       this.redirectBack();
     }
