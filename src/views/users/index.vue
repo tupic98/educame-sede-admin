@@ -174,7 +174,7 @@ export default class UsersPage extends Vue {
   }
 
   get lastPage() {
-    return Math.ceil(this.meta?.total / this.meta?.per_page) || 1;
+    return Math.ceil(+this.meta?.total / +this.meta?.per_page) || 1;
   }
 
   onFiltersChange(value: Filters) {

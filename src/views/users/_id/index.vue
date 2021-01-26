@@ -210,14 +210,15 @@ export default class ShowUserPage extends Vue {
 
   async mounted() {
     const { id } = this.$route.params;
-    await this.fetchUser({ id, vm: this });
+    await this.fetchUser({ id: +id, vm: this });
     if (!this.user.id) {
       this.redirectBack();
     }
   }
 
   async deleteItem() {
-    await this.deleteUser(this.user?.id);
+    // @ts-ignore
+    await this.deleteUser({ id: +this.user?.id, vm: this });
     this.showConfirmationModal = true;
   }
 

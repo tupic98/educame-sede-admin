@@ -269,7 +269,7 @@ export default class NewUserPage extends Vue {
       await this.fetchSedeList(this);
       await this.fetchSubjectsList(this);
     } catch (e) {
-      this.$snotify.error('Ha ocurrido un error');
+      (this as any).$snotify.error('Ha ocurrido un error');
     }
   }
 
