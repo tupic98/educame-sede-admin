@@ -36,6 +36,7 @@ export default {
       (error) => {
         // TODO: Enable throw plugin in babel
         error.response.status === 401 ? store.dispatch('auth/logout') : '';
+        return Promise.reject(error);
       },
     );
   },
