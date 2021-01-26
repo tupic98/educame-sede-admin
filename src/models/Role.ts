@@ -1,5 +1,6 @@
 interface Role {
   id: number,
   name: string,
-  type: string
+  type: string,
+  permissions?: any,
 }
