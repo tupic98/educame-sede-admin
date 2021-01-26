@@ -82,20 +82,20 @@
                       <p
                         class="block px-3 font-semibold leading-5 text-gray-700 text-md"
                       >
-                        {{ $auth.user.name }}
+                       Nombre
                       </p>
                       <span
                         class="block px-3 text-xs leading-5 text-gray-600"
                       >Administrador</span>
                     </div>
-                    <a
+                    <!--<a
                       href="#"
                       @click="profile()"
                       class="flex items-center w-full h-8 px-4 text-sm font-semibold leading-5 text-blue-500 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                       role="menuitem"
                     >
                       Perfil
-                    </a>
+                    </a>-->
                     <button
                       class="flex items-center w-full h-8 px-4 text-sm font-semibold leading-5 text-blue-500 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                       role="menuitem"
@@ -145,15 +145,13 @@
 
 <script lang="ts">
 import { Vue, Component, Emit } from 'vue-property-decorator';
-import { namespace } from 'vuex-class';
+import { Action, Getter } from 'vuex-class';
 import { ActionMethod } from 'vuex';
-
-const Auth = namespace('auth');
 
 @Component
 export default class Navbar extends Vue {
-  @Auth.Action('logout') logout!: () => ActionMethod;
-  @Auth.Getter('isAuthenticated') isAuthenticated!: boolean;
+  @Action('logout') logout!: () => ActionMethod;
+  @Getter('isAuthenticated') isAuthenticated!: boolean;
 
   showUserMenu = false;
 
@@ -173,7 +171,7 @@ export default class Navbar extends Vue {
 
   async signOut() {
     try {
-      this.logout();
+      await this.logout();
       this.$router.replace('/login');
     } catch (error) {
       return error;
