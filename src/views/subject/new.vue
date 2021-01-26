@@ -82,7 +82,7 @@ const GradeModel = namespace('grade');
     CustomButton,
     ToggleSelector,
     InputGroup,
-    InputSelect
+    InputSelect,
   },
 })
 export default class NewSubject extends Vue {
