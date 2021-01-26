@@ -186,7 +186,7 @@ export default class EditRolePage extends Vue {
       await this.fetchPermissionsList(this);
       this.setCurrentRole();
     } catch (e) {
-      this.$snotify.error('Ha ocurrido un error');
+      (this as any).$snotify.error('Ha ocurrido un error');
     }
   }
 
