@@ -1,0 +1,26 @@
+.pagination {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 5px;
+  border-radius: 5px;
+  color: #8a8995;
+
+  li {
+    margin: 5px
+  }
+
+  a {
+    width: 100%;
+    height: 100%;
+    padding: 0.75rem 1rem;
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.active {
+    font-weight: 600;
+    color: #ffa115;
+  }
+}

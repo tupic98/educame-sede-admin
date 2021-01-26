@@ -1,0 +1,85 @@
+$loading-background-legacy: #7f7f7f !default;
+$loading-background: rgba(255,255,255,0.5) !default;
+$loading-icon-size: 3em !default;
+$loading-full-page-icon-size: 5em !default;
+
+$grey-lighter: hsl(0, 0%, 86%) !default;
+$radius-rounded: 290486px !default;
+
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg)
+  }
+}
+
+
+@mixin overlay($offset: 0) {
+  bottom: $offset;
+  left: $offset;
+  position: absolute;
+  right: $offset;
+  top: $offset;
+}
+
+@mixin loader {
+  animation: spinAround 500ms infinite linear;
+  border: 2px solid $grey-lighter;
+  border-radius: $radius-rounded;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1em;
+  position: relative;
+  width: 1em;
+}
+
+.infinite-loader {
+  animation: spinAround 670ms infinite linear;
+}
+
+.loading-overlay {
+    @include overlay;
+    align-items: center;
+    display: none;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 999;
+    &.is-active {
+        display: flex
+    }
+    &.is-full-page {
+        position: fixed;
+        .loading-icon {
+            &:after {
+                top: calc(50% - #{$loading-full-page-icon-size / 2});
+                left: calc(50% - #{$loading-full-page-icon-size / 2});
+                width: $loading-full-page-icon-size;
+                height: $loading-full-page-icon-size;
+            }
+        }
+    }
+    .loading-background {
+        @include overlay;
+        background:$loading-background-legacy;
+        background:$loading-background;
+    }
+    .loading-icon {
+        position: relative;
+        &:after {
+            @include loader;
+            position: absolute;
+            top: calc(50% - #{$loading-icon-size / 2});
+            left: calc(50% - #{$loading-icon-size / 2});
+            width: $loading-icon-size;
+            height: $loading-icon-size;
+            border-width: 0.25em;
+        }
+    }
+}
+
+@import './pagination';
+@import '_loading.scss';
