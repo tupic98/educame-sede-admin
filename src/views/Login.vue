@@ -32,7 +32,7 @@
             />
           </pattern>
         </defs>
-        <rect width="404" height="404" fill="url(#ad119f34-7694-4c31-947f-5c9d249b21f3)" />
+        <rect width="404" height="404" fill="url(#ad119f34-7694-4c31-947f-5c9d249b21f3)"/>
       </svg>
       <div class="w-full max-w-lg mx-auto">
         <div>
@@ -46,16 +46,16 @@
             <ValidationObserver ref="form" tag="form" autocomplete="off" @submit.prevent="onSubmit">
               <ValidationProvider
                 v-slot="{ errors }"
-                vid="email"
-                name="correo electrónico"
+                vid="user"
+                name="usuario"
                 tag="div"
-                rules="required|email"
+                rules="required"
               >
                 <input-group
-                  id="signin-email"
-                  v-model="form.email"
-                  label="Correo electrónico"
-                  name="email"
+                  id="signin-username"
+                  v-model="form.username"
+                  label="Usuario"
+                  name="user"
                   :error="errors[0]"
                 />
               </ValidationProvider>
@@ -91,12 +91,12 @@
                 </div>
 
                 <div class="text-sm leading-5">
-                  <nuxt-link
+                  <router-link
                     to="/reset"
                     class="font-medium text-blue-600 transition duration-150 ease-in-out hover:text-blue-500 focus:outline-none focus:underline"
                   >
                     ¿Olvidaste tu contraseña?
-                  </nuxt-link>
+                  </router-link>
                 </div>
               </div>
 
@@ -119,32 +119,40 @@
       <div class="w-full h-screen bg-blue-600">
       </div>
     </div>
+    <vue-snotify></vue-snotify>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import { Action, State } from 'vuex-class';
+import InputGroup from '@/components/ui/InputGroup.vue';
+import CustomButton from '@/components/ui/CustomButton.vue';
+import axios from '@/services/core/http';
 
-@Component
+@Component({
+  components: {
+    InputGroup,
+    CustomButton,
+  },
+})
 export default class SignInPage extends Vue {
-  isLoading = false
   form = {
-    email: '',
+    username: '',
     password: '',
-  }
+  };
+
+  @State((state) => state.auth.isLoading) isLoading!: boolean;
+  @Action('authenticate') login!: ({ credentials, vm }: { credentials: LoginCredentials; vm: any }) => void;
 
   layout() {
     return 'auth';
   }
 
   async onSubmit() {
-    this.isLoading = true;
-    await (this.$refs.form as any).validate();
-    try {
-      // eslint-disable-next-line no-empty
-    } catch (err) {
-    } finally {
-      this.isLoading = false;
+    const isValid = await (this.$refs.form as any).validate();
+    if (isValid) {
+      await this.login({ credentials: this.form, vm: this });
     }
   }
 }
