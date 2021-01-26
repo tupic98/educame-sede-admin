@@ -172,7 +172,7 @@ export default class Navbar extends Vue {
   async signOut() {
     try {
       await this.logout();
-      this.$router.replace('/login');
+      await this.$router.replace('/login');
     } catch (error) {
       return error;
     }

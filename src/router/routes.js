@@ -82,6 +82,106 @@ export default [
       component: () => import(/* webpackChunkName: "roles-id-edit" */ '@/views/roles/_id/edit.vue'),
     },
     {
+      path: '/sede',
+      name: 'sede',
+      component: () => import(/* webpackChunkName: "sede" */ '@/views/sede/index.vue'),
+    },
+    {
+      path: '/sede/new',
+      name: 'sede-new',
+      component: () => import(/* webpackChunkName: "sede-new" */ '@/views/sede/new.vue'),
+    },
+    {
+      path: '/sede/:id',
+      name: 'sede-id',
+      component: () => import(/* webpackChunkName: "sede-id" */ '@/views/sede/_id/index.vue'),
+    },
+    {
+      path: '/sede/:id/edit',
+      name: 'sede-id-edit',
+      component: () => import(/* webpackChunkName: "sede-id-edit" */ '@/views/sede/_id/edit.vue'),
+    },
+    {
+      path: '/modality',
+      name: 'modality',
+      component: () => import(/* webpackChunkName: "modality" */ '@/views/modality/index.vue'),
+    },
+    {
+      path: '/modality/new',
+      name: 'modality-new',
+      component: () => import(/* webpackChunkName: "modality-new" */ '@/views/modality/new.vue'),
+    },
+    {
+      path: '/modality/:id',
+      name: 'modality-id',
+      component: () => import(/* webpackChunkName: "modality-id" */ '@/views/modality/_id/index.vue'),
+    },
+    {
+      path: '/modality/:id/edit',
+      name: 'modality-id-edit',
+      component: () => import(/* webpackChunkName: "modality-id-edit" */ '@/views/modality/_id/edit.vue'),
+    },
+    {
+      path: '/section',
+      name: 'section',
+      component: () => import(/* webpackChunkName: "section" */ '@/views/section/index.vue'),
+    },
+    {
+      path: '/section/new',
+      name: 'section-new',
+      component: () => import(/* webpackChunkName: "section-new" */ '@/views/section/new.vue'),
+    },
+    {
+      path: '/section/:id',
+      name: 'section-id',
+      component: () => import(/* webpackChunkName: "section-id" */ '@/views/section/_id/index.vue'),
+    },
+    {
+      path: '/section/:id/edit',
+      name: 'section-id-edit',
+      component: () => import(/* webpackChunkName: "section-id-edit" */ '@/views/section/_id/edit.vue'),
+    },
+    {
+      path: '/grade',
+      name: 'grade',
+      component: () => import(/* webpackChunkName: "grade" */ '@/views/grade/index.vue'),
+    },
+    {
+      path: '/grade/new',
+      name: 'grade-new',
+      component: () => import(/* webpackChunkName: "grade-new" */ '@/views/grade/new.vue'),
+    },
+    {
+      path: '/grade/:id',
+      name: 'grade-id',
+      component: () => import(/* webpackChunkName: "grade-id" */ '@/views/grade/_id/index.vue'),
+    },
+    {
+      path: '/grade/:id/edit',
+      name: 'grade-id-edit',
+      component: () => import(/* webpackChunkName: "grade-id-edit" */ '@/views/grade/_id/edit.vue'),
+    },
+    {
+      path: '/subject',
+      name: 'subject',
+      component: () => import(/* webpackChunkName: "subject" */ '@/views/subject/index.vue'),
+    },
+    {
+      path: '/subject/new',
+      name: 'subject-new',
+      component: () => import(/* webpackChunkName: "subject-new" */ '@/views/subject/new.vue'),
+    },
+    {
+      path: '/subject/:id',
+      name: 'subject-id',
+      component: () => import(/* webpackChunkName: "subject-id" */ '@/views/subject/_id/index.vue'),
+    },
+    {
+      path: '/subject/:id/edit',
+      name: 'subject-id-edit',
+      component: () => import(/* webpackChunkName: "subject-id-edit" */ '@/views/subject/_id/edit.vue'),
+    },
+    {
       path: '/about',
       name: 'About',
       // route level code-splitting

@@ -177,7 +177,7 @@ export default class EditRolePage extends Vue {
   @RoleModel.Action('update') updateRole!: ({ role, vm }: { role: any; vm: any }) => ActionMethod;
   @RoleModel.Action('show') fetchRole!: ({ id, vm }: { id: number; vm: any }) => ActionMethod;
   @PermissionModel.Action('list') fetchPermissionsList!: (vm: any) => ActionMethod;
-  @PermissionModel.State('isLoadingk') isPermissionsLoading!: boolean;
+  @PermissionModel.State('isLoading') isPermissionsLoading!: boolean;
   @PermissionModel.State('permissionsList') permissionsList!: Permission[];
 
   async mounted() {
