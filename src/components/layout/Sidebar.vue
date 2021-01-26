@@ -112,6 +112,14 @@
                       Modalidad
                     </router-link>
                     <router-link
+                      to="/subject"
+                      exact-active-class="font-bold text-blue-600"
+                      active-class="font-bold text-blue-600"
+                      class="flex items-center w-full pt-1 mt-1 text-sm font-medium leading-5 transition-all duration-150 ease-in-out rounded-md group hover:text-blue-500 pl-11"
+                    >
+                      Materia
+                    </router-link>
+                    <router-link
                       to="/grade"
                       exact-active-class="font-bold text-blue-600"
                       active-class="font-bold text-blue-600"

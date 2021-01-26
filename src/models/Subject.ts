@@ -1,5 +1,7 @@
 interface Subject {
   id: number,
   name: string,
-  grade: Grade,
+  grade?: Grade,
+  gradeId?: number,
+  isExternalTest?: boolean,
 }

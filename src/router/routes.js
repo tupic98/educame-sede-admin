@@ -162,6 +162,26 @@ export default [
       component: () => import(/* webpackChunkName: "grade-id-edit" */ '@/views/grade/_id/edit.vue'),
     },
     {
+      path: '/subject',
+      name: 'subject',
+      component: () => import(/* webpackChunkName: "subject" */ '@/views/subject/index.vue'),
+    },
+    {
+      path: '/subject/new',
+      name: 'subject-new',
+      component: () => import(/* webpackChunkName: "subject-new" */ '@/views/subject/new.vue'),
+    },
+    {
+      path: '/subject/:id',
+      name: 'subject-id',
+      component: () => import(/* webpackChunkName: "subject-id" */ '@/views/subject/_id/index.vue'),
+    },
+    {
+      path: '/subject/:id/edit',
+      name: 'subject-id-edit',
+      component: () => import(/* webpackChunkName: "subject-id-edit" */ '@/views/subject/_id/edit.vue'),
+    },
+    {
       path: '/about',
       name: 'About',
       // route level code-splitting
