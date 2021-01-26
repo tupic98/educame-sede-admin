@@ -145,11 +145,11 @@ export default class ShowStudentPage extends Vue {
   showConfirmationModal = false;
   showDeleteModal = false;
   modifyingNotes: {
-    [key: string]: number | string | any
-  } = {}
+    [key: string]: number | string | any;
+  } = {};
   notesForm: {
-    [key: string]: number | string | any
-  } = {}
+    [key: string]: number | string | any;
+  } = {};
 
   @Students.State('isLoading') isStudentsLoading!: boolean;
   @Students.State('student') student!: Student;
@@ -184,7 +184,7 @@ export default class ShowStudentPage extends Vue {
   }
 
   async deleteItem() {
-    await this.deleteStudent({ id: +this.student?.id, vm: this});
+    await this.deleteStudent({ id: +this.student?.id, vm: this });
     this.showConfirmationModal = true;
   }
 

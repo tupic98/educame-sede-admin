@@ -6,7 +6,7 @@ import PermissionService from '@/services/PermissionService';
 type PermissionActionsContext = ActionContext<PermissionsState, RootState>
 
 export const actions: ActionTree<PermissionsState, RootState> = {
-  fetch: async ({ commit }: PermissionActionsContext , { filters, vm }: { filters: Filters; vm: any }) => {
+  fetch: async ({ commit }: PermissionActionsContext, { filters, vm }: { filters: Filters; vm: any }) => {
     try {
       commit('toggleLoading', true);
       const params = { ...filters };

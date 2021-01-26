@@ -217,8 +217,8 @@ export default class ShowUserPage extends Vue {
   }
 
   async deleteItem() {
-    // @ts-ignore
-    await this.deleteUser({ id: +this.user?.id, vm: this });
+    const id = Number(this.user?.id);
+    await this.deleteUser({ id, vm: this });
     this.showConfirmationModal = true;
   }
 
