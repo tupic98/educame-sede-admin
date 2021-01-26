@@ -15,15 +15,25 @@ import Snotify, { SnotifyPosition } from 'vue-snotify';
 import App from './App.vue';
 import store from './store';
 import '@/bootstrap';
+import VTooltip from 'v-tooltip'
+// @ts-ignore
+import Paginate from 'vuejs-paginate'
+// @ts-ignore
+import VueTheMask from 'vue-the-mask'
 
 import './assets/scss/tailwind.scss';
 
+Vue.use(VTooltip)
 Vue.use(vClickOutside);
+Vue.component('paginate', Paginate)
+Vue.use(VueTheMask)
 
 /* <editor-fold desc="Snotify"> */
 const options = {
+  showProgressBar: false,
   toast: {
     position: SnotifyPosition.rightTop,
+    showProgressBar: false,
   },
 };
 
@@ -53,6 +63,34 @@ declare module 'vue/types/vue' {
 }
 
 Vue.config.productionTip = false;
+
+Vue.filter('moneyFormat', (value: any) => {
+  if (value) {
+    let number;
+    if (typeof value === 'string') {
+      number = parseFloat(value.replace(',', ''));
+    } else {
+      number = parseFloat(value.toString().replace(',', ''));
+    }
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(number);
+  }
+  return '$ 0.00';
+});
+
+Vue.filter('formatShippingCost', (value: any) => {
+  if (value) { return `$${value}` }
+});
+
+Vue.filter('capitalize', (string: string) => {
+  if (string) { return `${string[0].toUpperCase()}${string.slice(1)}` };
+  return '';
+});
+
+Vue.filter('truncate', (string: any, length = 50) => {
+  if (!string || typeof string !== 'string') { return '' }
+  if (string.length <= length) { return string }
+  return string.substring(0, length) + '...';
+});
 
 new Vue({
   router,
