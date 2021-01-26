@@ -59,22 +59,17 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const isPublic = to.matched.some((record) => record.meta.public);
   const onlyWhenLoggedOut = to.matched.some((record) => record.meta.onlyWhenLoggedOut);
-  const loggedIn = store.getters['auth/isAuthenticated'];
-
-  console.log(isPublic);
-  console.log(onlyWhenLoggedOut);
-  console.log(loggedIn);
+  const loggedIn = store.getters.isAuthenticated;
 
   if (!isPublic && !onlyWhenLoggedOut && !loggedIn) {
     return next({
       name: 'Login',
-      query: { redirect: to.fullPath }, // Store the full path to redirect the user to after login
     });
   }
 
   // Do not allow user to visit login page or register page if they are logged in
   if (loggedIn && onlyWhenLoggedOut) {
-    return next({ name: 'Dashboard' });
+    return next('/');
   }
 
   next();
