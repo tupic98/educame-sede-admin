@@ -179,7 +179,7 @@ export default class NewUserPage extends Vue {
     try {
       await this.fetchPermissionsList(this);
     } catch (e) {
-      this.$snotify.error('Ha ocurrido un error');
+      (this as any).$snotify.error('Ha ocurrido un error');
     }
   }
 
