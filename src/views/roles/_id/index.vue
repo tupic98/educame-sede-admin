@@ -168,14 +168,14 @@ export default class ShowRolePage extends Vue {
 
   async mounted() {
     const { id } = this.$route.params;
-    await this.fetchRole({ id, vm: this });
+    await this.fetchRole({ id: +id, vm: this });
     if (!this.role.id) {
       this.redirectBack();
     }
   }
 
   async deleteItem() {
-    await this.deleteRole(this.role?.id);
+    await this.deleteRole({ id: this.role?.id, vm: this });
     this.showConfirmationModal = true;
   }
 
