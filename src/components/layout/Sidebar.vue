@@ -10,7 +10,7 @@
         >
           <div class="flex flex-col flex-grow">
             <nav class="flex-1 px-2 pt-12">
-              <nuxt-link
+              <router-link
                 to="/"
                 exact-active-class="text-blue-500 "
                 class="flex items-center px-2 pt-1 mb-6 text-sm font-medium leading-5 transition duration-150 ease-in-out rounded-md group text-dark-blue-700 hover:text-dark-blue-700 focus:outline-none"
@@ -25,7 +25,7 @@
                   />
                 </svg>
                 Inicio
-              </nuxt-link>
+              </router-link>
               <div>
                 <button
                   class="flex items-center w-full px-2 pt-1 mt-1 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out rounded-md group hover:text-blue-500 focus:outline-none"
@@ -71,30 +71,30 @@
                     v-show="menuItems.administration"
                     class="my-2 text-gray-700"
                   >
-                    <nuxt-link
+                    <router-link
                       to="/users"
                       exact-active-class="font-bold text-blue-600 "
                       active-class="font-bold text-blue-600"
                       class="flex items-center w-full pt-1 text-sm font-medium leading-5 transition-all duration-150 ease-in-out rounded-md group hover:text-blue-500 pl-11"
                     >
                       Usuarios
-                    </nuxt-link>
-                    <nuxt-link
+                    </router-link>
+                    <router-link
                       to="/roles"
                       exact-active-class="font-bold text-blue-600"
                       active-class="font-bold text-blue-600"
                       class="flex items-center w-full pt-1 mt-1 text-sm font-medium leading-5 transition-all duration-150 ease-in-out rounded-md group hover:text-blue-500 pl-11"
                     >
                       Roles
-                    </nuxt-link>
-                    <nuxt-link
-                      to="/permissions"
+                    </router-link>
+                    <router-link
+                      to="/students"
                       exact-active-class="font-bold text-blue-600"
                       active-class="font-bold text-blue-600"
                       class="flex items-center w-full pt-1 mt-1 text-sm font-medium leading-5 transition-all duration-150 ease-in-out rounded-md group hover:text-blue-500 pl-11"
                     >
-                      Permisos
-                    </nuxt-link>
+                      Estudiantes
+                    </router-link>
                   </div>
                 </transition>
               </div>
