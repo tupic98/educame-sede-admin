@@ -21,5 +21,6 @@ module.exports = {
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
     'lines-between-class-members': 'off',
+    'import/no-named-as-default': 'off',
   },
 };
