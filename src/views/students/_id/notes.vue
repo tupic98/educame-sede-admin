@@ -43,6 +43,8 @@
                 <div v-else class="flex-grow flex items-center">
                   <input-group
                     v-model="notesForm[selectedModule][subject.id].note"
+                    :max="10"
+                    type="number"
                     label="Nota"
                     no-margin
                   />
@@ -210,6 +212,12 @@ export default class ShowStudentPage extends Vue {
   async updateNotes(key: string) {
     try {
       const { id } = this.$route.params;
+      if (this.notesForm[this.selectedModule][key].note > 10) {
+        this.notesForm[this.selectedModule][key].note = 10;
+      }
+      if (this.notesForm[this.selectedModule][key].note < 0) {
+        this.notesForm[this.selectedModule][key].note = 0;
+      }
       await this.updateNote({ payload: this.notesForm[this.selectedModule][key], vm: this });
       this.$set(this.modifyingNotes[this.selectedModule], key, false);
       await this.fetchNotes({ id: +id, vm: this });
